@@ -1,0 +1,7 @@
+<form action="/first/req/post/" method="post">
+    <input type="text" name="a"><br>
+    <input type="text" name="b"><br>
+    <input type="text" name="c"><br>
+    {% csrf_token %}
+    <button>Send</button>
+</form>
