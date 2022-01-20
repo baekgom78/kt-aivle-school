@@ -1,0 +1,7 @@
+<body>
+    <h1>제주 올레길 정보</h1>
+    <hr>
+    {% for j in jeju_olle %}
+    <h3>{{ j.course }} / {{ j.course_name }} / {{ j.distance }} / {{ j.time_info }} / {{ j.start_end_info }} </h3>
+    {% endfor %}
+</body>
