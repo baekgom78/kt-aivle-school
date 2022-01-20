@@ -1,5 +1,7 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
+from django.views.decorators.csrf import csrf_exempt
+from django.forms.models import model_to_dict
 
 def main(request):
     return HttpResponse('<b>Main</b>')
@@ -38,3 +40,16 @@ def army_shop2(request, year, month):
     result = [ '%s %s %s<br>' % (i.year, i.month, i.name) for i in shop]
     
     return HttpResponse(''.join(result))
+
+@csrf_exempt
+def ajaxGet(request):
+    c = Course.objects.all()
+    data = []
+    for a in c:
+        d = model_to_dict(a)
+        data.append(d)
+    return JsonResponse(data, safe=False)
+
+
+def ajaxExam(request):
+    return render(request, 'secondapp/exam.html')
