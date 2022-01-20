@@ -52,3 +52,16 @@ def req_post(request):
         result = '%s %s %s' % (a, b, c)
         return HttpResponse(result)
     return render(request, 'firstapp/post.html')
+
+
+def req_post(request):
+    if request.method == 'POST':
+        a = request.POST.get('a')
+        b = request.POST.get('b')
+        c = request.POST['c']
+        result = '%s %s %s' % (a, b, c)
+        return HttpResponse(result)
+    return render(request, 'firstapp/post.html')
+
+def req_ajax4(request):
+    return render(request, 'firstapp/ajax4.html')

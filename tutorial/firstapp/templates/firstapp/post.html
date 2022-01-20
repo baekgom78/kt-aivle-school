@@ -5,3 +5,26 @@
     {% csrf_token %}
     <button>Send</button>
 </form>
+
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+    const data = axios({
+        url: 'https://ggoreb.com/dinosaur/info.jsp',
+        method: 'get',
+        params: {
+            'search' : '성북구'
+        }
+    });
+    data.then(function (result) {
+        console.log(result.data);
+        let html = '<ol>';
+        for(let i =0; i <result.data.length;i++){
+            let kind = result.data[i]['kind']
+            console.log(kind);
+            html += `<li>${kind}</li>`
+            // <li>육식공룡</li><li>초식공룡</li>
+        }
+        html += '</ol>'
+        document.body.innerHTML += html;
+    });
+</script>
