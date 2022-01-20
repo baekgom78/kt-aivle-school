@@ -1,6 +1,7 @@
 import json
 from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
+from django.views.decorators.csrf import csrf_exempt
 
 
 def index1(request):
@@ -66,6 +67,7 @@ def req_post(request):
 def req_ajax4(request):
     return render(request, 'firstapp/ajax4.html')
 
+@csrf_exempt
 def req_json(request):
     obj = request.body.decode("utf-8")
     data = json.loads(obj)
