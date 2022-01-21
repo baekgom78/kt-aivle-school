@@ -1,6 +1,6 @@
 from django.urls import path
 from . import views
-
+app_name = 'secondapp'
 urlpatterns = [
     path('main/', views.main),
     path('insert/', views.insert),
@@ -9,4 +9,5 @@ urlpatterns = [
     path('army_shop/<int:year>/<int:month>/', views.army_shop2),
     path('req/ajax/exam/', views.ajaxExam),
     path('req/ajax/get/', views.ajaxGet),
+    path('course/create/', views.course_create, name='course_create'),
 ]

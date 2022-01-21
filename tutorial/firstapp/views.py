@@ -1,3 +1,5 @@
+from django.shortcuts import redirect
+from .forms import CurriculumForm
 import json
 from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
@@ -93,3 +95,20 @@ def custom_filter(request):
 
 def template(request):
     return render(request, 'firstapp/template.html')
+
+
+def form_model(request):
+
+
+    if request.method == 'POST':
+        form = CurriculumForm(request.POST)
+        if form.is_valid():
+            curriculum = form.save(commit=False)
+            curriculum.save()
+            return redirect('firstapp:post')
+    else:
+        form = CurriculumForm()
+    return render(
+        request, 'firstapp/form_model.html',
+        {'form': form }
+    )

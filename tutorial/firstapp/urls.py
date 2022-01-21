@@ -15,4 +15,5 @@ urlpatterns = [
     path('tag/',views.tag),
     path('custom_filter/',views.custom_filter),
     path('template/',views.template),
+    path('form/model/', views.form_model, name='form_model'),
 ]
